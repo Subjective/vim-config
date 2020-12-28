@@ -23,6 +23,10 @@ filetype plugin on
 let mapleader = "-"
 let maplocalleader = "\\"
 
+"escape key (insert mode)
+inoremap jk <Esc>
+inoremap kj <Esc>
+
 "split navigations
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
@@ -32,6 +36,11 @@ nnoremap <C-H> <C-W><C-H>
 "switch buffers
 nnoremap <silent> <TAB> :bnext<CR>
 nnoremap <silent> <S-TAB> :bprevious<CR>
+
+"create new empty buffer
+nnoremap <leader>nb :enew<CR>
+"close buffer
+nnoremap <leader>bd :bd<CR>
 
 set splitbelow
 set splitright
@@ -47,7 +56,7 @@ set foldlevel=99
 nnoremap <space> za
 
 " open files with ctrl-p
-nnoremap <c-p> :Files<cr>
+nnoremap <C-p> :Files<CR>
 
 au BufNewFile,BufRead *.py,*.java,*.cpp,*.c,*.cs,*.rkt,*.h,*.html
     \ set tabstop=4 |
@@ -63,7 +72,7 @@ set encoding=utf-8
 syntax on
 
 " air-line
-let g:airline_powerline_fonts = 1
+let g:irline_powerline_fonts = 1
 let g:airline_theme = 'purify'
 let g:airline#extensions#tabline#enabled = 1
 
@@ -113,12 +122,13 @@ endif
 
 colorscheme purify
 
-set mouse=a
-set nu rnu " relative line numbering
-set clipboard=unnamed " public copy/paste register
+set hidden "hide buffers
+set mouse=a "enable mouse control
+set nu rnu "relative line numbering
+set clipboard=unnamed "public copy/paste register
 set ruler
 set showcmd
-set noswapfile " doesn't create swap files
+set noswapfile "doesn't create swap files
 set noshowmode
 set shortmess+=c
 set omnifunc=syntaxcomplete#Complete
