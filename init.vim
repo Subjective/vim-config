@@ -113,6 +113,7 @@ endif
 
 colorscheme purify
 
+set mouse=a
 set nu rnu " relative line numbering
 set clipboard=unnamed " public copy/paste register
 set ruler
