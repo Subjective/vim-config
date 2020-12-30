@@ -48,13 +48,13 @@ set splitright
 "autocmd vimenter *NERDTree
 nnoremap <C-t> :NERDTreeToggle<CR>
 
-" Enable folding
+"Enable folding
 set foldmethod=indent
 set foldlevel=99
 "Enable folding with the spacebar
 nnoremap <space> za
 
-" open files with ctrl-p
+"open files with ctrl-p
 nnoremap <C-p> :Files<CR>
 
 au BufNewFile,BufRead *.py,*.java,*.cpp,*.c,*.cs,*.rkt,*.h,*.html
@@ -70,7 +70,7 @@ set encoding=utf-8
 
 syntax on
 
-" air-line
+"air-line
 let g:irline_powerline_fonts = 1
 let g:airline_theme = 'purify'
 let g:airline#extensions#tabline#enabled = 1
@@ -79,7 +79,7 @@ if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
 
-" unicode symbols
+"unicode symbols
 let g:airline_left_sep = '»'
 let g:airline_left_sep = '▶'
 let g:airline_right_sep = '«'
@@ -93,7 +93,7 @@ let g:airline_symbols.paste = 'Þ'
 let g:airline_symbols.paste = '∥'
 let g:airline_symbols.whitespace = 'Ξ'
 
-" airline symbols
+"airline symbols
 let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
 let g:airline_right_sep = ''
@@ -105,9 +105,9 @@ let g:airline_symbols.linenr = ''
 highlight Comment cterm=italic gui=italic
 
 set laststatus=2
-" set showtabline=2
+"set showtabline=2
 
-" true colours
+"true colours
 set background=dark
 set t_Co=256
 
@@ -132,9 +132,9 @@ set noshowmode
 set shortmess+=c
 set omnifunc=syntaxcomplete#Complete
 
-set backspace=indent,eol,start " let backspace delete over lines
-set autoindent " enable auto indentation of lines
-set smartindent " allow vim to best-effort guess the indentation
+set backspace=indent,eol,start "let backspace delete over lines
+set autoindent "enable auto indentation of lines
+set smartindent "allow vim to best-effort guess the indentation
 set pastetoggle=<F2> " enable paste mode
 
 set wildmenu "graphical auto complete menu
@@ -145,22 +145,22 @@ set hlsearch "highlights matching searches
 
 "clears highlights
 nnoremap // :noh<return>
-" moves current line down or up
+"moves current line down or up
 nnoremap <leader>- ddp
 nnoremap <leader>_ ddkP
-" open vimrc in vertical split
+"open vimrc in vertical split
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-" update changes into current buffer
+"update changes into current buffer
 nnoremap <leader>sv :source $MYVIMRC<cr>
-" enable or disable line wrapping in current buffer
+"enable or disable line wrapping in current buffer
 nnoremap <buffer> <localleader>w :set wrap!<cr>
 
-" c++11 support in syntastic
+"c++11 support in syntastic
 let g:syntastic_cpp_compiler = 'clang++'
 let g:syntastic_cpp_compiler_options = ' -std=c++11'
 
 
-" run code
+"run code
 augroup compileandrun
     autocmd!
     autocmd filetype python nnoremap <f5> :w <bar> :!python3 % <cr>
