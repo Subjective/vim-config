@@ -15,6 +15,8 @@ Plug 'preservim/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'mhinz/vim-startify'
 Plug 'justinmk/vim-sneak'
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
 
 call plug#end()
 
@@ -71,8 +73,12 @@ set encoding=utf-8
 
 syntax on
 
+"delimitmate
+let delimitMate_expand_cr = 1
+let delimitMate_expand_space = 1
+
 " air-line
-let g:irline_powerline_fonts = 1
+let g:airline_powerline_fonts = 1
 let g:airline_theme = 'purify'
 let g:airline#extensions#tabline#enabled = 1
 
@@ -156,16 +162,16 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 " enable or disable line wrapping in current buffer
 nnoremap <buffer> <localleader>w :set wrap!<cr>
 
-" c++11 support in syntastic
+" c++17 support in syntastic
 let g:syntastic_cpp_compiler = 'clang++'
-let g:syntastic_cpp_compiler_options = ' -std=c++11'
+let g:syntastic_cpp_compiler_options = ' -std=c++17'
 
 
 " run code
 augroup compileandrun
     autocmd!
     autocmd filetype python nnoremap <f5> :w <bar> :!python3 % <cr>
-    autocmd filetype cpp nnoremap <f5> :w <bar> !g++ -std=c++11 % <cr> :vnew <bar> :te "a.exe" <cr><cr>
+    autocmd filetype cpp nnoremap <f5> :w <bar> !g++ -std=c++17 % <cr> :vnew <bar> :te "a.exe" <cr><cr>
     autocmd filetype cpp nnoremap <f6> :vnew <bar> :te "a.exe" <cr>
     autocmd filetype c nnoremap <f5> :w <bar> !make %:r && ./%:r <cr>
     autocmd filetype java nnoremap <f5> :w <bar> !javac % && java %:r <cr>
