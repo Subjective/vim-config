@@ -169,6 +169,11 @@ nnoremap <buffer> <localleader>w :set wrap!<cr>
 let g:syntastic_cpp_compiler = 'g++-11'
 let g:syntastic_cpp_compiler_options = ' -std=c++17'
 
+" highlight yank
+augroup highlight_yank
+    autocmd!
+    au TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=200}
+augroup END
 
 " run code
 augroup compileandrun
