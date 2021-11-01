@@ -25,36 +25,36 @@ filetype plugin on
 let mapleader = "-"
 let maplocalleader = "\\"
 
-"escape key (insert mode)
+" escape key (insert mode)
 inoremap jk <Esc>
 inoremap kj <Esc>
 
-"split navigations
+" split navigations
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-"switch buffers
+" switch buffers
 nnoremap <silent> <TAB> :bnext<CR>
 nnoremap <silent> <S-TAB> :bprevious<CR>
 
-"create new empty buffer
+" create new empty buffer
 nnoremap <leader>nb :enew<CR>
-"close buffer
+" close buffer
 nnoremap <leader>bd :bd<CR>
 
 set splitbelow
 set splitright
 
-"NerdTree stuff"
-"autocmd vimenter *NERDTree
+" NerdTree stuff"
+" autocmd vimenter *NERDTree
 nnoremap <C-t> :NERDTreeToggle<CR>
 
 " Enable folding
 set foldmethod=indent
 set foldlevel=99
-"Enable folding with the spacebar
+" Enable folding with the spacebar
 nnoremap <space> za
 
 " open files with ctrl-p
@@ -71,9 +71,12 @@ au BufNewFile,BufRead *.py,*.java,*.cpp,*.c,*.cs,*.rkt,*.h,*.html
 
 set encoding=utf-8
 
+" disable newline at end of file
+set nofixendofline
+
 syntax on
 
-"delimitmate
+" delimitmate
 let delimitMate_expand_cr = 1
 let delimitMate_expand_space = 1
 
@@ -128,13 +131,13 @@ endif
 
 colorscheme purify
 
-set hidden "hide buffers
-set mouse=a "enable mouse control
-set nu rnu "relative line numbering
-set clipboard=unnamed "public copy/paste register
+set hidden " hide buffers
+set mouse=a " enable mouse control
+set nu rnu " relative line numbering
+set clipboard=unnamed " public copy/paste register
 set ruler
 set showcmd
-set noswapfile "doesn't create swap files
+set noswapfile " doesn't create swap files
 set noshowmode
 set shortmess+=c
 set omnifunc=syntaxcomplete#Complete
@@ -144,13 +147,13 @@ set autoindent " enable auto indentation of lines
 set smartindent " allow vim to best-effort guess the indentation
 set pastetoggle=<F2> " enable paste mode
 
-set wildmenu "graphical auto complete menu
-set lazyredraw "redraws the screne when it needs to
-set showmatch "highlights matching brackets
-set incsearch "search as characters are entered
-set hlsearch "highlights matching searches
+set wildmenu " graphical auto complete menu
+set lazyredraw " redraws the screne when it needs to
+set showmatch " highlights matching brackets
+set incsearch " search as characters are entered
+set hlsearch " highlights matching searches
 
-"clears highlights
+" clears highlights
 nnoremap // :noh<return>
 " moves current line down or up
 nnoremap <leader>- ddp
@@ -163,7 +166,7 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 nnoremap <buffer> <localleader>w :set wrap!<cr>
 
 " c++17 support in syntastic
-let g:syntastic_cpp_compiler = 'clang++'
+let g:syntastic_cpp_compiler = 'g++-11'
 let g:syntastic_cpp_compiler_options = ' -std=c++17'
 
 
@@ -171,8 +174,7 @@ let g:syntastic_cpp_compiler_options = ' -std=c++17'
 augroup compileandrun
     autocmd!
     autocmd filetype python nnoremap <f5> :w <bar> :!python3 % <cr>
-    autocmd filetype cpp nnoremap <f5> :w <bar> !g++ -std=c++17 % <cr> :vnew <bar> :te "a.exe" <cr><cr>
-    autocmd filetype cpp nnoremap <f6> :vnew <bar> :te "a.exe" <cr>
+    autocmd filetype cpp nnoremap <f5> :w <bar> :!g++-11 -std=c++17 -O2 % -o %:r -Wall <cr> :term ./%:r <cr><cr>
     autocmd filetype c nnoremap <f5> :w <bar> !make %:r && ./%:r <cr>
     autocmd filetype java nnoremap <f5> :w <bar> !javac % && java %:r <cr>
 augroup END
